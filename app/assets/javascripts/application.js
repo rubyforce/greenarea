@@ -16,7 +16,7 @@
 
 //= require gritter
 //= require vendors/html5
-//= require vendors/fancybox.min
+//= require vendors/jquery.fancybox
 //= require ajax
 //
 //= require vendors/infobubble
