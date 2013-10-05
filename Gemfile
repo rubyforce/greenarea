@@ -12,7 +12,10 @@ gem 'unicorn'
 
 group :assets do
   gem 'sass-rails'
+  gem 'less-rails'
 end
+
+gem 'therubyracer'
 
 gem 'newrelic_rpm'
 gem 'asset_sync'

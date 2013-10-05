@@ -1,0 +1,223 @@
+@charset "UTF-8";
+
+@import "typeplate.less";
+@import 'mixins.less';
+
+@designerHighlight: @lustRed;
+
+
+
+/*	Screen size display
+	(don't really need it anymore since Google Chrome now displays
+	rulers when you resize the window and have the Dev Tools open)
+—————————————————————————————————————————————————————————————————————————— */
+#screen-size-label {
+	display: none;
+	position: fixed;
+	z-index: 9999;
+	right: 0; bottom: 0;
+	span {
+		font-weight: normal;
+	}
+}
+	
+#screen-size-label li,
+#screen-width {
+	display: none;
+	background: lightGray;
+	color: white;
+	font-size: 0.6em;
+	font-weight: bold;
+	padding: .3em .7em;
+}
+#screen-width {
+	position: fixed;
+	z-index: 9999;
+	bottom:0;
+	display: none;
+}
+@media only screen and (min-width: 1800px){	// Very large screen
+	#screen-size-label li#xxl { display: block; }
+}
+@media only screen and (min-width: 1500px) and (max-width: 1799px){ // Large screen
+	#screen-size-label li#xl { display: block; }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1499px){ // Desktop screens
+	#screen-size-label li#l { display: block; }
+}
+@media only screen and (min-width: 1001px) and (max-width: 1199px) { // Default
+	#screen-size-label li#m { display: block; }
+}
+@media only screen and (min-width: 700px) and (max-width: 1000px) { // Tablets and landscape large smartphones
+	#screen-size-label li#s { display: block; }
+}
+@media only screen and (min-width: 470px) and (max-width: 699px) { // Large smartphones
+	#screen-size-label li#xs { display: block; }
+}
+@media only screen and (max-width: 469px) { // Smartphones
+	#screen-size-label li#xxs { display: block; }
+}
+
+
+
+
+
+
+
+/*	Designer pointers
+	
+	WP pointers
+	https://github.com/WordPress/WordPress/blob/3.4.1/wp-includes/css/wp-pointer.dev.css
+—————————————————————————————————————————————————————————————————————————— */
+.wp-pointer {
+}
+
+.wp-pointer-content {
+	position: relative;
+	//background: mix(@designerHighlight, white, 90%);
+	.linear-gradient(top, lighten(@designerHighlight, 3%), darken(@designerHighlight, 3%));
+	color: white;
+	text-shadow: 0 -1px fade(black, 15%);
+	.lambda;
+	padding-bottom: @padding/2;
+	.box-shadow(0, .5rem, 1rem, fade(black, 30%));
+	
+	p, ul {
+		padding: 0 @padding/1.5;
+		margin: @padding/2 0;
+		&:first-child {
+			margin-top: 0;
+			padding-top: @padding/1.5;
+		}
+	}
+	ul {
+		padding-left: @padding/1.5*2;
+	}
+	ul li {
+		list-style-type: disc;
+		list-style-position: outside;
+	}
+	h3 {
+		position: relative;
+		margin-bottom: @padding/2;
+		padding: @padding/2;
+		
+		.gamma;
+		color: white;
+		
+		&:before {
+			font-family: 'icobundl';
+			font-size: 1.2em;
+			line-height: 0;
+			vertical-align: middle;
+			content: '\e83d';
+			margin-right: @padding/2;
+			margin-left: @padding/6;
+		}
+	}
+	
+	*:last-child {
+		margin-bottom: 0;
+	}
+}
+
+
+
+.wp-pointer-buttons {
+	padding: 0 @padding/2;
+	margin: @padding/2 0;
+	text-align: right;
+	a {
+		text-shadow: none;
+		color: darken(@designerHighlight, 30%);
+		display: inline-block;
+		text-decoration: none;
+		&:hover, &:active {
+			color: darken(@designerHighlight, 60%);
+		}
+		&.close {
+			&:before {
+				font-family: 'icobundl';
+				content: '\e801';
+				margin-right: @padding/5;
+			}
+		}
+	}
+}
+
+
+
+
+/* The arrow base class must take up no space, even with transparent borders. */
+.wp-pointer-arrow,
+.wp-pointer-arrow-inner {
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+
+.wp-pointer-arrow {
+	z-index: 10;
+	//background:url('../images/arrow-pointer-blue.png') 0 0 no-repeat;
+}
+
+.wp-pointer-arrow-inner {
+	z-index: 20;
+}
+
+/* Make Room for the Arrow! */
+.wp-pointer-top,
+.wp-pointer-undefined {
+	padding-top: @padding/3;
+}
+
+.wp-pointer-bottom {
+	padding-bottom: @padding/3;
+}
+
+.wp-pointer-left {
+	padding-left: @padding/3;
+}
+
+.wp-pointer-right {
+	padding-right: @padding/3;
+}
+
+
+/* Base Size & Positioning */
+.wp-pointer-top .wp-pointer-arrow,
+.wp-pointer-bottom .wp-pointer-arrow,
+.wp-pointer-undefined .wp-pointer-arrow {
+	left: @padding*2;
+	border-left: @padding/3.5 solid transparent;
+	border-right: @padding/3.5 solid transparent;
+}
+
+.wp-pointer-left .wp-pointer-arrow,
+.wp-pointer-right .wp-pointer-arrow {
+	top: @padding/2;
+	border-top: @padding/3.5 solid transparent;
+	border-bottom: @padding/3.5 solid transparent;
+}
+
+/* Arrow Sprite */
+.wp-pointer-top .wp-pointer-arrow,
+.wp-pointer-undefined .wp-pointer-arrow {
+	top: (@padding/3) - (@padding/3.5);
+	border-bottom: @padding/3.5 solid lighten(@designerHighlight, 3%);
+}
+
+.wp-pointer-bottom .wp-pointer-arrow {
+	bottom: (@padding/3) - (@padding/3.5);
+	border-top: @padding/3.5 solid darken(@designerHighlight, 3%);
+}
+
+.wp-pointer-left .wp-pointer-arrow {
+	left: (@padding/3) - (@padding/3.5);
+	border-right: @padding/3.5 solid @designerHighlight;
+}
+
+.wp-pointer-right .wp-pointer-arrow {
+	right: (@padding/3) - (@padding/3.5);
+	border-left: @padding/3.5 solid @designerHighlight;
+}

@@ -1,7 +1,22 @@
-<div class="example"> <i class="icon code"></i>
+
+<div class="example" ng-controller='ProjectController' data-project="<%= project_json(project) %>">
   <h4 class="ui header"><%= project.name %></h4>
 
   <p><%= project.short_description %></p>
+
+  <div class="map-view" ng-class='{tucked:!isOpened}' ng-controller='MapsController' data-markers='<%= projects_json([project]) %>'>
+    <div class="map-toolbar-one">
+      <div class="show-map ui button" ng-click='show()'>Show map</div>
+    </div>
+
+    <div class="map-toolbar-two">
+      <div class="show-map ui button" ng-click='close()'>x</div>
+    </div>
+
+    <div class="map-viewport">
+      <es-google-map options='google.settings' refresh='google.refresh' extra='google.extra' styles='google.styles' style='height: 30rem;display:block;'></es-google-map>
+    </div>
+  </div>
 
   <div class="ui celled list">
     <% project.investments.each do |investment| %>

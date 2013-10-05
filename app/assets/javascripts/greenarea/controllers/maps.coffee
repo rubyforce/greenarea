@@ -3,7 +3,7 @@ greenarea.controller 'MapsController', [
   ($scope, $element, EstatesMap) ->
     $scope.markers = $element.data('markers')
 
-    $scope.google = EstatesMap.settings($scope.user, $scope.markers)
+    $scope.google = EstatesMap.settings({}, $scope.markers)
     $scope.google.settings.mapTypeControlOptions = false
     $scope.google.settings.disableDefaultUI = true
     $scope.isOpened = false
