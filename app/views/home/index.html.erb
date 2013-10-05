@@ -26,6 +26,11 @@
   </div>
 </div>
 
+
+<div class="ui horizontal" style='position: absolute'>
+  <i class="down icon" style='font-size: 2em;'></i><span style='margin-left: 5px;'>click to place marker here</span>
+</div>
+
 <div class="stripe" ng-controller='HomeController' data-projects="<%= projects_json(@projects) %>">
   <es-google-map options='google.settings' refresh='google.refresh' extra='google.extra' styles='google.styles' style='height: 30rem;display:block;'></es-google-map>
 </div>
