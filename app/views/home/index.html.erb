@@ -1,11 +1,13 @@
-<div class="masthead segment">
-  <h1 class="ui header">How it works?</h1>
+<% if current_user.blank? %>
+  <div class="masthead segment">
+    <h1 class="ui header">How it works?</h1>
 
-  <br />
+    <br />
 
-  <ul class="bxslider">
-  </ul>
-</div>
+    <ul class="bxslider">
+    </ul>
+  </div>
+<% end %>
 
 <div class="stripe" ng-controller='HomeController'>
   <es-google-map options='google.settings' refresh='google.refresh' extra='google.extra' styles='google.styles' style='height: 30rem;display:block;'></es-google-map>
