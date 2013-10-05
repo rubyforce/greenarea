@@ -1,19 +1,13 @@
 <div class="masthead segment">
   <h1 class="ui header">How it works?</h1>
 
+  <br />
+
   <ul class="bxslider">
   </ul>
 </div>
 
-<div class="stripe">
-  <div class="ui page grid">
-    <div class="ui column">
-      <h2 class="ui header">
-        <div class="content">
-          <!-- place here map -->
-        </div>
-      </h2>
-    </div>
-  </div>
+<div class="stripe" ng-controller='HomeController'>
+  <es-google-map options='google.settings' refresh='google.refresh' extra='google.extra' styles='google.styles' style='height: 30rem;display:block;'></es-google-map>
 </div>
 
