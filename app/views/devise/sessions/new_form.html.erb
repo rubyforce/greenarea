@@ -4,7 +4,7 @@
       <label>Email</label>
       <div class="ui left labeled icon input">
         <%= f.email_field :email, placeholder: "E-mail"%>
-        <i class="user icon"></i>
+        <i class="mail icon"></i>
         <div class="ui corner label">
           <i class="icon asterisk"></i>
         </div>
@@ -21,11 +21,9 @@
       </div>
     </div>
     <div>
-      <a href="<%= new_user_password_path %>" class="sign-in fancybox.ajax">Forgot password?</a>
-    </div>
-    <div class="ui error message">
-      <div class="header">We noticed some issues</div>
+      <a href="<%= new_user_password_path %>" class="forgotpas fancybox.ajax">Forgot password?</a>
     </div>
     <div><%= f.submit "Log in", class: "ui blue submit button" %></div>
+      <%= render 'users/sessions/social' %>
   </div>
 <% end %>
