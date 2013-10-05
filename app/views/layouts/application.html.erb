@@ -1,31 +1,61 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-<head>
-  <title><%= t('.title') %></title>
-  <meta charset="utf-8">
-  <meta name="description" content="html meta description" />
-  <meta name="keywords" content="html, meta, keywords" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <head>
+    <title><%= t('.title') %></title>
+    <meta charset="utf-8">
+    <meta name="description" content="html meta description" />
+    <meta name="keywords" content="html, meta, keywords" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-  <%= yield :meta %>
+    <%= yield :meta %>
 
-  <%= javascript_include_tag "application"%>
-  <%= stylesheet_link_tag "application" %>
-  <%= csrf_meta_tags %>
+    <%= javascript_include_tag "application"%>
+    <%= stylesheet_link_tag "application" %>
+    <%= csrf_meta_tags %>
 
-  <!-- sensor=false tells google images we aren't trying to sense the user's location -->
-  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <!-- sensor=false tells google images we aren't trying to sense the user's location -->
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
-  <%= analytics_init if Rails.env.production? %>
+    <%= analytics_init if Rails.env.production? %>
 
-  <!--[if lte IE 8]> <%= stylesheet_link_tag "ie8" %><![endif]-->
-</head>
-<body ng-controller='ApplicationController'>
-  <%= gflash %>
+    <!--[if lte IE 8]> <%= stylesheet_link_tag "ie8" %><![endif]-->
 
-  <%= yield %>
+    <%= stylesheet_link_tag '/css/semantic.min' %>
+    <%= javascript_include_tag '/javascript/semantic.min' %>
 
+  </head>
 
-</body>
+  <body id="example" class="index" ng-controller='ApplicationController'>
+    <%= gflash %>
+
+    <div class="ui fixed transparent inverted main menu">
+      <div class="container">
+
+        <div class="right menu">
+          <div class="vertically fitted borderless item">
+            <iframe src="http://ghbtns.com/github-btn.html?user=jlukic&repo=greenarea&type=watch&count=true"
+              allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
+          </div>
+
+          <a class="popup icon github item" title="View project on Github" href="https://github.com/quirkyinc/semantic">
+            <i class="icon github"></i>
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+    <%= yield %>
+
+    <div class="ui divider"></div>
+
+    <div class="ui divided horizontal footer link list">
+      <a href="https://github.com/jlukic/Semantic-UI" class="item">Github</a>
+      <a href="http://www.quirky.com" class="item">Quirky.com</a>
+      <div class="item">jack lukic 2013</div>
+    </div>
+
+  </body>
 </html>
+
