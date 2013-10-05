@@ -34,7 +34,6 @@ gem 'haml'
 gem 'devise', git: 'git://github.com/plataformatec/devise.git'
 gem 'cancan'
 gem 'protected_attributes'
-gem 'pg'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'fog'
@@ -77,6 +76,8 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+gem 'pg'
 
 group :development, :test do
   gem 'bullet'
