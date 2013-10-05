@@ -80,6 +80,6 @@ Greenarea::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  GA.tracker = 'UA-43566255-1'
+  GA.tracker = 'UA-44623074-1'
 end
 
