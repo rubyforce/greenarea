@@ -1,55 +1,36 @@
-<section id="investor" ng-controller='ProfileController' data-user='<%= profile_user_json(@user) %>' data-projects='<%= projects_json(@user.invested_projects) %>'  data-urls="<%= profile_user_button_urls_json(@user) %>">
-  <% if current_user == @user %>
-    <div class="message">
-      <div>
-        This is Your profile. &nbsp;&nbsp;<a class="button" href="<%= edit_user_registration_path %>">Settings</a>
-      </div>
+<div class="main container">
+
+  <div class="sticky-wrapper stuck" style="height: 132px;"><div class="peek">
+    <div class="ui vertical pointing secondary menu">
+      <a class="item active">Profile</a>
+      <a class="item">Recent Activity</a>
     </div>
-  <% end %>
+  </div></div>
 
-  <div class="head">
-
-    <div class="contract">
-
-      <figure class="profile-badge">
-        <%= render partial: 'users/avatar', locals: { user: @user } %><div class="focus"></div>
-      </figure>
-
-      <div class="profile-details">
-        <h3 class="name">
-          <%= @user.name %>
-
-          <div class="ext-account-buttons">
-            <span>
-              <button name="ext-account" value="facebook" class="ext-account-button facebook" ng-click="open(user.facebook_link)" ng-class="{'connected-ext-account-button':user.facebook_link}" ng-hide="!user.facebook_link"></button>
-              <button name="ext-account" value="twitter" class="ext-account-button twitter" ng-click='open(user.twitter_link)' ng-class="{'connected-ext-account-button':user.twitter_link}" ng-hide="!user.twitter_link"></button>
-              <button name="ext-account" value="google-plus" class="ext-account-button google-plus" ng-click='open(user.google_plus_link)' ng-class="{'connected-ext-account-button':user.google_plus_link}" ng-hide="!user.google_plus_link"></button>
-              <button name="ext-account" value="linked-in" class="ext-account-button linked-in" ng-click='open(user.linkedin_link)' ng-class="{'connected-ext-account-button':user.linkedin_link}" ng-hide="!user.linkedin_link"></button>
-            </span>
-          </div>
-        </h3>
-
-        <div class="mini-bio">
-          <p><%= @user.short_bio %></p>
-        </div>
-
-      </div>
-
-    </div>
-  </div> <!-- head -->
-
-  <div class="body">
-    <div class="map-viewport">
-      <es-google-map options='google.settings' refresh='google.refresh' extra='google.extra' styles='google.styles' style='height: 30rem;display:block;'></es-google-map>
-    </div>
-
-    <div id="timeline">
-      <ul class="feed">
-        <% for activity in @user.activities.order('created_at desc').limit(15) %>
-          <%= render_activity(activity, current_user: current_user) %>
-        <% end %>
-      </ul>
-    </div>
+  <div class="example" style="margin-top: 4em">
+    <%= render partial: 'users/avatar', locals: { user: @user } %>
+    <h2 class="ui header"><%= @user.name %></h2>
+    <p><%= @user.short_bio %></p>
   </div>
-</section>
 
+  <div class="ui piled feed segment">
+    <h2 class="ui header">
+      Recent Activity
+    </h2>
+    <% for activity in @user.activities.order('created_at desc').limit(15) %>
+      <div class="event">
+        <!-- <div class="label">
+          <%= image_tag @user.profile_image %>
+        </div> -->
+        <div class="content">
+          <div class="date">
+            <time><%= distance_of_time_in_words_to_now(activity.created_at) %></time>
+          </div>
+          <div class="summary">
+             <%= render_activity(activity, current_user: current_user) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
