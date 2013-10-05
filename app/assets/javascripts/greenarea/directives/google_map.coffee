@@ -27,10 +27,8 @@ greenarea.directive 'esGoogleMap', [
           mapTypeControlOptions: $scope.options.mapTypeControlOptions
           disableDefaultUI: $scope.options.disableDefaultUI
         google.maps.event.trigger(_instance, "resize")
-
         if $scope.options.center.latitude? && $scope.options.center.longitude?
           center = new google.maps.LatLng($scope.options.center.latitude, $scope.options.center.longitude)
-
         _instance.setCenter(center)
 
         $timeout ->
