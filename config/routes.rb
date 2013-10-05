@@ -1,3 +1,5 @@
+require File.expand_path(File.join(Rails.root, 'api/api.rb'))
+
 Greenarea::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -30,5 +32,6 @@ Greenarea::Application.routes.draw do
   resources :events
 
   mount GetVersion::Web => '/'
+  mount Api => '/api'
 end
 

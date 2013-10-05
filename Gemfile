@@ -8,6 +8,7 @@ gem 'rake', '~> 10.1.0'
 gem 'rails', '4.0.0'
 gem "rack-cache"
 
+gem 'grape'
 gem 'unicorn'
 
 group :assets do

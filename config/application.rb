@@ -11,7 +11,7 @@ module Greenarea
 
     config.active_record.whitelist_attributes = false
 
-    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/lib #{config.root}/api)
 
     config.assets.enabled = true
 
