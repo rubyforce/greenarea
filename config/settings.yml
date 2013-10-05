@@ -12,8 +12,8 @@ production:
     host: "smtp.sendgrid.net"
     port: 587
     domain: "http://greenarea.herokuapp.com/"
-    username: "oivoodoo"
-    password: "201287ali"
+    username: <%= ENV['SENDGRID_USERNAME'] %>
+    password: <%= ENV['SENDGRID_PASSWORD'] %>
     support_address: "alex.korsak@gmail.com"
   redis:
     url: "redis://127.0.0.1:6379/"
