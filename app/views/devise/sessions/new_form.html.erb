@@ -20,10 +20,11 @@
         </div>
       </div>
     </div>
+
     <div>
-      <a href="<%= new_user_password_path %>" class="forgotpas fancybox.ajax">Forgot password?</a>
+      <%= f.submit "Log in", class: "ui blue submit button" %>
     </div>
-    <div><%= f.submit "Log in", class: "ui blue submit button" %></div>
-      <%= render 'users/sessions/social' %>
+
+    <%= render 'users/sessions/social' %>
   </div>
 <% end %>

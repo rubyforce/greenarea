@@ -9,7 +9,7 @@
           <div class="action">
             <div>
               <div>
-                Sign up with an external account to follow your friends' activity on Flock.<br><a href="<%= new_user_registration_path(:internal => true) %>" class="external fancybox.ajax">Sign up without any external accounts</a>.
+                <a href="<%= new_user_registration_path(:internal => true) %>" class="external fancybox.ajax">Sign up without any external accounts</a>.
               </div>
             </div>
           </div>
@@ -35,10 +35,11 @@
             </div>
             <label>I agree to the terms and conditions</label>
           </div>
+
           <div>
-            Already have an account? <a href="<%= new_user_session_path %>" class="sign-in fancybox.ajax">Sign in</a>.
+            <%= f.submit "Sign up", class: "ui blue submit button" %>
+            <span>Already have an account? <a href="<%= new_user_session_path %>" class="sign-in fancybox.ajax">Sign in</a></span>
           </div>
-          <div><%= f.submit "Sign up", class: "ui blue submit button" %></div>
         <% end %>
       <% end %>
     </div>
