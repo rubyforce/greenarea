@@ -1,3 +1,13 @@
-<button type='button' onclick="window.location = '<%= user_omniauth_authorize_path(:facebook) %>'" name="ext-account" value="facebook" class="ext-account-button facebook"></button>
-<button type='button' onclick="window.location = '<%= user_omniauth_authorize_path(:google_oauth2) %>'" name="ext-account" value="google-plus" class="ext-account-button google-plus"></button>
-<button type='button' onclick="window.location = '<%= user_omniauth_authorize_path(:linkedin) %>'" name="ext-account" value="linked-in" class="ext-account-button linked-in"></button>
+<div class="icon example">
+	<div class="ui three column grid">
+		<div class="column">
+			<i style='font-size: 5em' onclick="window.location = '<%= user_omniauth_authorize_path(:facebook) %>'" class="facebook sign icon"></i>
+		</div>
+		<div class="column">
+			<i style='font-size: 5em' onclick="window.location = '<%= user_omniauth_authorize_path(:google_oauth2) %>'" class="google plus sign icon"></i>
+		</div>
+		<div class="column">
+			<i style='font-size: 5em' onclick="window.location = '<%= user_omniauth_authorize_path(:linkedin) %>'" class="linkedin sign icon"></i>
+		</div>
+	</div>
+</div>

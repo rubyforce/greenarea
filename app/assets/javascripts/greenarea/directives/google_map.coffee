@@ -22,12 +22,19 @@ greenarea.directive 'esGoogleMap', [
       _instance.setMapTypeId($scope.styles.id)
 
       # setup refresh event
-      $scope.$watch 'refresh', =>
+      $scope.$watch 'refresh', (value) =>
         _instance.setOptions
           mapTypeControlOptions: $scope.options.mapTypeControlOptions
           disableDefaultUI: $scope.options.disableDefaultUI
         google.maps.event.trigger(_instance, "resize")
+        if $scope.options.center.latitude? && $scope.options.center.longitude?
+          center = new google.maps.LatLng($scope.options.center.latitude, $scope.options.center.longitude)
         _instance.setCenter(center)
+
+        $timeout ->
+          center = _instance.getCenter()
+          google.maps.event.trigger(_instance, "resize")
+          _instance.setCenter(center)
 
       addMarker = (m) ->
         marker = new google.maps.Marker
