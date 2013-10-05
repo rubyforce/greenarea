@@ -1,12 +1,12 @@
 <div class="left menu">
-  <div class="green item active">
-    <a><i class="home icon"></i> Home</a>
+  <div class="green item <%= active_menu_item("home") %>">
+    <a href="<%= root_path %>"><i class="home icon"></i> Home</a>
   </div>
-  <div class="green item">
-    <a><i class="home icon"></i> Projects</a>
+  <div class="green item <%= active_menu_item("projects") %>">
+    <a href="<%= projects_path %>"><i class="home icon"></i> Projects</a>
   </div>
-  <div class="red item">
-    <a><i class="home icon"></i> Events</a>
+  <div class="red item <%= active_menu_item("events") %>">
+    <a href="<%= events_path %>"><i class="home icon"></i> Events</a>
   </div>
 </div>
 

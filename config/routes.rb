@@ -27,6 +27,8 @@ Greenarea::Application.routes.draw do
 
   resources :contacts, only: [:new, :create]
 
+  resources :events
+
   mount GetVersion::Web => '/'
 end
 

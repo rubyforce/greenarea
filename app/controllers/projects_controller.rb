@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
   before_filter :find_project, except: :index
-  before_filter :authenticate_user!, only: [:follow, :unfollow]
 
 	def index
     @projects = ProjectsDecorator.decorate(Project.page(params[:page]))
