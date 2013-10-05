@@ -1,9 +1,9 @@
 <div class="main container" >
   <h1 class="ui">Projects</h1>
   <%= render @projects %>
+  <%= render "comments/form" %>
 </div>
 
 <div class="main container">
   <%= paginate @projects %>
 </div>
-
