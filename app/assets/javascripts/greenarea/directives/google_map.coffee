@@ -97,6 +97,9 @@ greenarea.directive 'esGoogleMap', [
             $scope.$apply ->
               $scope.options.zoom = zoom;
 
+      google.maps.event.addListener _instance, 'click', (e) ->
+        $('.test.modal').modal('show')
+
     return {
       restrict: 'ECA'
       priority: 100
