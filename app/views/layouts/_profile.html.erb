@@ -10,6 +10,6 @@
     <a class="user fancybox.ajax" href="<%= edit_user_registration_path %>"><i class="user icon "></i> Profile</a>
   </div>
   <div class="red item">
-    <a href="<%= new_user_registration_path %>"><i class="sign out icon"></i> Log Out</a>
+    <%= link_to('Log Out', destroy_user_session_path, :method => :delete)%><i class="sign out icon"></i>
   </div>
 <% end %>
