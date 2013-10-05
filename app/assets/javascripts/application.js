@@ -18,6 +18,7 @@
 //= require vendors/html5
 //= require vendors/jquery.fancybox
 //= require ajax
+//= require sign-in_sign-up
 //
 //= require vendors/infobubble
 //= require vendors/semantic.min

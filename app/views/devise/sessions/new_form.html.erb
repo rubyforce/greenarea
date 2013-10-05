@@ -1,30 +1,31 @@
-<div id="sign-in" class="signin external">
-  <div class="modal-header">
-    <div>
-      <div class="close" onclick="$.fancybox.close()"></div>
-    </div>
-  </div>
-
-  <div class="modal-content">
-    <div>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
-        <div class="tight">
-          <div class="input-group">
-            <%= f.email_field :email, placeholder: "E-mail", autocomplete: 'off', size: 1, style: 'width: 50%' %>
-            <%= f.password_field :password, placeholder: "Password", autocomplete: 'off', size: 1, style: 'width: 50%' %>
-          </div>
+<div class="ui form segment">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
+    <div class="field">
+      <label>Email</label>
+      <div class="ui left labeled icon input">
+        <%= f.email_field :email, placeholder: "E-mail"%>
+        <i class="user icon"></i>
+        <div class="ui corner label">
+          <i class="icon asterisk"></i>
         </div>
-        <div class="action">
-          <div>
-            <div>
-              <a href="<%= new_user_password_path %>" class="sign-in fancybox.ajax">Forgot password?</a>
-            </div>
-            <div>
-              <%= f.submit "Sign in", class: "delta thicker" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      </div>
     </div>
+    <div class="field">
+      <label>Password</label>
+      <div class="ui left labeled icon input">
+        <%= f.password_field :password, placeholder: "Password"%>
+        <i class="lock icon"></i>
+        <div class="ui corner label">
+          <i class="icon asterisk"></i>
+        </div>
+      </div>
+    </div>
+    <div>
+      <a href="<%= new_user_password_path %>" class="sign-in fancybox.ajax">Forgot password?</a>
+    </div>
+    <div class="ui error message">
+      <div class="header">We noticed some issues</div>
+    </div>
+    <div><%= f.submit "Log in", class: "ui blue submit button" %></div>
   </div>
-</div>
+<% end %>
