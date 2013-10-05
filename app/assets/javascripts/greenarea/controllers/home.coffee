@@ -1,7 +1,15 @@
 greenarea.controller 'HomeController', [
-  '$scope', '$timeout', 'EstatesMap'
-  ($scope, $timeout, EstatesMap) ->
-    $scope.google = EstatesMap.settings({}, [])
+  '$scope', '$timeout', '$element', '$rootScope', 'EstatesMap'
+  ($scope, $timeout, $element, $rootScope, EstatesMap) ->
+    $scope.projects = $element.data('projects')
+    $scope.google = EstatesMap.settings({}, $scope.projects)
+
+    $rootScope.$on 'new-marker', (event, project) ->
+      $scope.projects.push(project)
+      $scope.google = EstatesMap.settings({}, $scope.projects)
+      $timeout ->
+        $scope.$apply ->
+          $scope.google.refresh = !$scope.google.refresh
 
     $timeout ->
       if navigator.geolocation?

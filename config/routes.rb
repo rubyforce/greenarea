@@ -14,7 +14,7 @@ Greenarea::Application.routes.draw do
 
   resources :subscriptions, only: :create
 
-  resources :projects, only: [:index, :show] do
+  resources :projects, except: :destroy do
     resources :investments, only: [:new, :create]
   end
 

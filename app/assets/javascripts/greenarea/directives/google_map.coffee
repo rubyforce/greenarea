@@ -1,8 +1,8 @@
 floatEqual = (f1, f2) -> Math.abs(f1 - f2) < 0.000001
 
 greenarea.directive 'esGoogleMap', [
-  '$timeout',
-  ($timeout) ->
+  '$timeout', '$rootScope'
+  ($timeout, $rootScope) ->
     link = ($scope, $element, $attributes) ->
       zoom = $scope.options.zoom
       dragging = $scope.options.dragging
@@ -98,7 +98,12 @@ greenarea.directive 'esGoogleMap', [
               $scope.options.zoom = zoom;
 
       google.maps.event.addListener _instance, 'click', (e) ->
-        $('.test.modal').modal('show')
+        $.get '/projects/new', (content) ->
+          position = e.latLng
+          $(content).modal('show')
+          Settings.latitude = position.lb
+          Settings.longitude = position.mb
+          $(document).trigger('ajax-ready')
 
     return {
       restrict: 'ECA'

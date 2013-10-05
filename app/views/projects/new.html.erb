@@ -1,12 +1,12 @@
-<div class="ui test modal transition hidden" ng-controller='MarkersController'>
+<form name='form' class="ui test modal transition hidden" ng-controller='MarkersController'>
   <i class="close icon"></i>
   <div class="header">Add new marker to this area</div>
   <div class="content">
     <div class="ui form segment">
       <div class="field">
-        <label>Title</label>
-        <div class="ui left labeled icon input">
-          <input type="text" name='title' ng-model='title' placeholder="Title" ng-required='true'>
+        <label>Name</label>
+        <div class="ui left labeled input">
+          <input type="text" name='project[name]' ng-model='project.name' placeholder="Name" ng-required='true'>
           <div class="ui corner label">
             <i class="icon asterisk"></i>
           </div>
@@ -16,7 +16,7 @@
       <div class="field">
         <label>Description</label>
         <div class="ui left labeled icon input">
-          <textarea type="text" name='description' ng-model='description' placeholder="Description" ng-required='true'></textarea>
+          <textarea type="text" name='project[description]' ng-model='project.description' placeholder="Description" ng-required='true'></textarea>
           <div class="ui corner label">
             <i class="icon asterisk"></i>
           </div>
@@ -48,5 +48,5 @@
       <i class="checkmark icon"></i>
     </div>
   </div>
-</div>
+</form>
 

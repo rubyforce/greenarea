@@ -83,8 +83,8 @@ greenarea.factory 'EstatesMap', [
         longitude: user.longitude || object.longitude || SF.longitude
 
       settings.center      = center
-      settings.zoom        = 14
-      settings.minZoom     = 14
+      settings.zoom        = 16
+      settings.minZoom     = 4
       settings.scrollwheel = false
       settings.markClick   = true
       settings.draggable   = true

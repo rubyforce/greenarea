@@ -38,44 +38,24 @@ describe ProjectsController do
     end
   end
 
-  context 'when logged in' do
-    before { logged_in }
+  context 'GET /new' do
+    before { get :new }
 
-    describe 'POST /follow' do
-      let!(:project) { create(:project) }
+    it { should respond_with(:success) }
+    it { should render_template('new') }
+  end
 
-      before { post :follow, id: project.to_param }
+  context 'POST /create' do
+    before { get :create, :project => { name: 'new-name', description: 'new-description', latitude: 123, longitude: 321 } }
 
-      it { should respond_with(:success) }
+    it { should respond_with(:success) }
 
-      it 'should allow current user to be as a follower of the project' do
-        expect(current_user.reload.following?(project)).to be_true
-      end
-
-      it 'should create activity for the project' do
-        expect(project.activities).to have(1).item
-        expect(project.activities[0].key).to eq("project.user_following")
-        expect(project.activities[0].owner).to eq(current_user)
-      end
-
-      it 'should create activity for the current user' do
-        expect(current_user.activities).to have(1).item
-        expect(current_user.activities[0].key).to eq("user.project_following")
-        expect(current_user.activities[0].owner).to eq(project)
-      end
-    end
-
-    describe 'POST /unfollow' do
-      let!(:project) { create(:project) }
-
-      before { current_user.follow(project) }
-      before { post :unfollow, id: project.to_param }
-
-      it { should respond_with(:success) }
-
-      it 'should allow current user to be as a follower of the project' do
-        expect(current_user.reload.following?(project)).to be_false
-      end
+    it 'create a new marker or project' do
+      project = Project.last
+      project.name.should        == 'new-name'
+      project.description.should == 'new-description'
+      project.latitude.should    == 123
+      project.longitude.should   == 321
     end
   end
 end
