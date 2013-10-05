@@ -15,6 +15,7 @@ group :assets do
 end
 
 gem 'newrelic_rpm'
+gem 'asset_sync'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

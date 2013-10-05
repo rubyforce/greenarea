@@ -1,2 +1,10 @@
-<h1>List of the projects</h1>
+<div class="main container">
+  <h1 class="ui">Projects</h1>
+
+  <%= render @projects %>
+</div>
+
+<div class="main container">
+  <%= paginate @projects %>
+</div>
 

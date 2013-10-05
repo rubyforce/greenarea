@@ -20,8 +20,6 @@ InvestmentsCreator = Struct.new(:user, :project) do
   end
 
   def update_project_money(investment)
-    project.raised = project.raised.to_f + investment.money
-    project.percent = project.raised * 100 / project.price.to_f
     project.save
   end
 end

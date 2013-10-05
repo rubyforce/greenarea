@@ -6,7 +6,6 @@ module SocialAuthentication
     mount_uploader :facebook_avatar, FacebookAvatarUploader
     mount_uploader :linkedin_avatar, LinkedinAvatarUploader
     mount_uploader :google_plus_avatar, GooglePlusAvatarUploader
-    mount_uploader :identification_document, IdentificationDocumentUploader
 
     has_many :authentications
 

@@ -11,7 +11,7 @@ module Addressable
     end
 
     before_save do
-      return unless address_changed?
+      return unless address_changed? || (longitude.blank? && latitude.blank?)
 
       begin
         coordinates = Geocoder.coordinates(address)
