@@ -1,8 +1,7 @@
 
 <div class="example" ng-controller='ProjectController' data-project="<%= project_json(project) %>">
   <h4 class="ui header"><%= project.name %></h4>
-
-  <p><%= project.short_description %></p>
+  <div class="sub header"><%= project.short_description %></div>
 
   <div class="map-view" ng-class='{tucked:!isOpened}' ng-controller='MapsController' data-markers='<%= projects_json([project]) %>'>
     <div class="map-toolbar-one">

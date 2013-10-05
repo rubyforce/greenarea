@@ -253,7 +253,6 @@ a:hover {
   border-bottom: none;
 }
 #example .masthead:before {
-  background: #00B5AD url(/images/tile-bg.png) repeat fixed 0% 0%;
   position: absolute;
   z-index: 1;
   width: 500%;
@@ -422,7 +421,7 @@ a:hover {
   margin-right: 1em;
 }
 #example .masthead.segment h1 {
-  font-size: 5em;
+  font-size: 3em;
   color: #FFFFFF;
   line-height: 1.2;
   margin: -20px 0px 0px;
