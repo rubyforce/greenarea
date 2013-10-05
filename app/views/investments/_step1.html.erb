@@ -1,0 +1,174 @@
+<div id="tab1" class="tab" ng-show="investButton == 0" ng-init='investButton = 0'>
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Verify Accreditation</h2>
+    </header>
+    <section class="module-section">
+      <p>
+        This investment is only available to accredited investors.
+        Please answer the following questions to verify your qualfication as an
+        <a href="http://www.sec.gov/answers/accred.htm" target="_blank">Accredited Investor</a>.
+      </p>
+    </section>
+  </div>
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Annual Individual Income</h2>
+    </header>
+    <section class="module-section">
+      <p>I have an individual income for each of the two most recent years equal to an income level indicated below and reasonably expect to reach at least the same income level this year.</p>
+      <ul class="radio-checkbox-list">
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:individual_income, "0", checked: true) %> Less than $1 million
+          </label>
+        </li>
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:individual_income, "1000000", checked: false) %> $1 - $2.5 million
+          </label>
+        </li>
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:individual_income, "2500000", checked: false) %> $2.5 - $5 million
+          </label>
+        </li>
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:individual_income, "5000000", checked: false) %> More than $5 million
+          </label>
+        </li>
+      </ul>
+    </section>
+  </div>
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Annual Joint Income</h2>
+    </header>
+    <section class="module-section">
+      <p>Does your joint income with your spouse exceed $300,000 annually?</p>
+      <ul class="radio-checkbox-list mb0">
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:joint_income, "more-than-300k", checked: false) %> Yes
+          </label>
+        </li>
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:joint_income, "less-than-300k", checked: true) %> No
+          </label>
+        </li>
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:joint_income, "single", checked: false) %> I’m not married
+          </label>
+        </li>
+      </ul>
+    </section>
+  </div>
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Net Worth</h2>
+    </header>
+    <section class="module-section">
+      <p>
+        Either individually or upon a joint basis with my spouse, I have a net worth equal
+        to an amount indicated below. I acknowledge that the value of my primary residence
+        does not count towards this amount.
+      </p>
+      <div class="fields">
+        <div class="select-holder">
+          <%= f.select :net_worth, net_worths %>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Business Representative</h2>
+    </header>
+    <section class="module-section">
+      <p>
+        Are you a representative of a bank, insurance company, registered investment company, business development company,
+        or small business investment company interested in investment opportunities on Fundrise?
+      </p>
+      <ul class="radio-checkbox-list mb0">
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:business_representative, "false", checked: true) %> Yes
+          </label>
+        </li>
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:business_representative, "true", checked: false) %> No
+          </label>
+        </li>
+      </ul>
+    </section>
+  </div>
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Securities Firm</h2>
+    </header>
+    <section class="module-section">
+      <p>Are you associated with a Securities Firm?</p>
+      <ul class="radio-checkbox-list mb0">
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:securities_firm, "false", checked: true) %> No
+          </label>
+        </li>
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:securities_firm, "true", checked: false) %> Yes
+          </label>
+        </li>
+      </ul>
+    </section>
+  </div>
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Public Company Director</h2>
+    </header>
+    <section class="module-section">
+      <p>Are you the director of a public company?</p>
+      <ul class="radio-checkbox-list mb0">
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:company_director, "false", checked: true) %> No
+          </label>
+        </li>
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:company_director, "true", checked: false) %> Yes
+          </label>
+        </li>
+      </ul>
+    </section>
+  </div>
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Public Company Shareholder or Officer</h2>
+    </header>
+    <section class="module-section">
+      <p>Are you a 10% shareholder or policy-making officer of a public company?</p>
+      <ul class="radio-checkbox-list mb0">
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:company_officer, "false", checked: true) %> No
+          </label>
+        </li>
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:company_officer, "true", checked: false) %> Yes
+          </label>
+        </li>
+      </ul>
+    </section>
+  </div>
+  <div class="module">
+    <div class="module-section form-actions">
+      <button class="button button-blue" es-scroll-top ng-click="step(1, $event)">Continue</button>
+    </div>
+  </div>
+</div>

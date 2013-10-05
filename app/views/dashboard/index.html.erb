@@ -1,0 +1,12 @@
+<section id="dashboard" ng-controller='DashboardController' data-user='<%= user_json(current_user) %>' data-projects='<%= projects_json(current_user.invested_projects) %>'>
+
+  <div id="timeline">
+    <ul class="feed">
+      <% for activity in current_user.activities.includes(:owner).includes(:trackable).order('created_at desc').limit(15) %>
+        <%= render_activity(activity, current_user: current_user) %>
+      <% end %>
+    </ul>
+  </div>
+
+</section>
+

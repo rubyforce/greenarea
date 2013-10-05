@@ -1,0 +1,13 @@
+<div>
+  <div class="ext-account-buttons">
+    <span>
+      <button name="ext-account" value="facebook" class="ext-account-button facebook labelled" title='Facebook' ng-click="open(user.facebook_link || '<%= user_omniauth_authorize_path(:facebook, :origin => edit_user_registration_url) %>')" ng-class="{'connected-ext-account-button':user.facebook_link}"></button>
+      <button name="ext-account" value="google-plus" class="ext-account-button google-plus labelled" title='Google+' ng-click="open(user.google_plus_link || '<%= user_omniauth_authorize_path(:google_oauth2, :origin => edit_user_registration_url) %>')" ng-class="{'connected-ext-account-button':user.google_plus_link}"></button>
+      <button name="ext-account" value="linked-in" class="ext-account-button linked-in labelled" title='LinkedIn' ng-click="open(user.linkedin_link || '<%= user_omniauth_authorize_path(:linkedin, :origin => edit_user_registration_url) %>')" ng-class="{'connected-ext-account-button':user.linkedin_link}"></button>
+    </span>
+    <p>
+      Connect external accounts to follow your friends' activity on Flock.
+    </p>
+  </div>
+</div>
+

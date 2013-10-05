@@ -1,0 +1,77 @@
+<link type="text/css" rel="stylesheet" href="/stylesheets/invests.css">
+
+<div ng-controller="InvestmentsController" data-project='<%= @project.to_json(methods: :per_share) %>' data-user='<%= current_user.to_json %>'>
+  <header id="page-header">
+    <div class="container">
+      <ol class="progress-indicator">
+        <li class="current  step" id="step1" ng-class= "{current:investButton == 0,completed:investButton > 0}">
+          <span class="step-number"><span class="fill">1</span></span>
+          <span class="step-title">Background <br class="show-on-mobile">Form</span>
+          <span class="step-connector"><span class="fill"></span></span>
+        </li>
+        <li class="  step" id="step2" ng-class="{current:investButton == 1,completed:investButton > 1}">
+          <span class="step-number"><span class="fill">2</span></span>
+          <span class="step-title">Investor <br class="show-on-mobile">Profile</span>
+          <span class="step-connector"><span class="fill"></span></span>
+        </li>
+        <li class="  step" id="step3" ng-class="{current:investButton == 2,completed:investButton > 2}">
+          <span class="step-number"><span class="fill">3</span></span>
+          <span class="step-title">Order <br class="show-on-mobile">Form</span>
+          <span class="step-connector"><span class="fill"></span></span>
+        </li>
+        <li class="  step" id="step4" ng-class="{current:investButton == 3,completed:investButton > 3}">
+          <span class="step-number"><span class="fill">4</span></span>
+          <span class="step-title">Review <br class="show-on-mobile">&amp; Finish</span>
+          <span class="step-connector"><span class="fill"></span></span>
+        </li>
+      </ol>
+    </div>
+  </header>
+
+  <div id="page-content">
+    <div class="container">
+      <div class="row">
+        <div class="span8 column">
+          <%= form_for [@project, @investment], :html => {:name => 'investor_profile'} do |f| %>
+            <%= render 'step1', f: f %>
+            <%= render 'step2', f: f %>
+            <%= render 'step3', f: f %>
+            <%= render 'step4', f: f %>
+          <% end %>
+        </div>
+
+        <div class="span4 column stl hide-on-mobile">
+          <div class="module">
+            <section class="module-section">
+              <% if @project.image? %>
+                <div class="image-bordered mb4" style='width: 238px; height: 119px;'>
+                  <a href="<%= project_path(@project) %>"><%= image_tag @project.image.url(:invest) %></a>
+                </div>
+              <% end %>
+
+              <h3 class="mb1 ellipsis"><a href="<%= project_path(@project) %>"><%= @project.address %></a></h3>
+              <table class="mt4 table-bordered" ng-show="investButton == 2 || investButton == 3">
+                <form name="theForm">
+                  <tbody><tr>
+                    <td class="muted">Quantity</td>
+                    <td class="text-right" id="quantity1">{{investment.quantity}}</td>
+                  </tr>
+                  <tr>
+                    <td class="muted">Price Per Share</td>
+                    <td class="text-right"><%= @project.view_per_share %></td>
+                  </tr>
+                  <tr>
+                    <td class="muted">Total Investment</td>
+                    <td class="text-right" id="total_investment">{{project.per_share * investment.quantity | currency:"$"}}</td>
+                  </tr>
+                  </tbody>
+                </form>
+              </table>
+
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

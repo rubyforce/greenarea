@@ -1,0 +1,71 @@
+<div id='tab4' class="tab" ng-show="investButton == 3">
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Review Your Order</h2>
+    </header>
+    <section class="module-section">
+      <p>Please double check to ensure that all fields have been filled out correctly before you place your order.</p>
+    </section>
+  </div>
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Account Details&nbsp;&nbsp;</h2>
+    </header>
+    <section class="module-section">
+      <table class="table-bordered checkout-review">
+        <tbody>
+          <tr>
+            <td class="muted">Full Name</td>
+            <td><%= current_user.name %></td>
+          </tr>
+          <tr>
+            <td class="muted">Email Address</td>
+            <td><%= current_user.email %></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Investor Profile&nbsp;&nbsp;<a style="line-height: 1;" class="small underline" id="edit_info" ng-click="step(1, $event)">edit this info</a></h2>
+    </header>
+    <section class="module-section">
+      <table class="table-bordered checkout-review">
+        <tbody>
+          <tr>
+            <td class="muted">Mailing Address</td>
+            <td id="address">{{investment.address_line_1 + " " + investment.address_line_2}}</td>
+          </tr>
+
+          <tr>
+            <td class="muted">City</td>
+            <td id="city1">{{investment.city}}</td>
+          </tr>
+          <tr>
+            <td class="muted">Country</td>
+            <td id="country">{{investment.country}}</td>
+          </tr>
+          <tr id="hidden_field_state" style="display: none;">
+            <td class="muted">State</td>
+            <td id="state">{{investment.state}}</td>
+          </tr>
+          <tr>
+            <td class="muted">ZIP Code</td>
+            <td id="zip1">{{investment.zip_code}}</td>
+          </tr>
+          <tr>
+            <td class="muted">Phone Number</td>
+            <td id="phone_number">{{investment.phone_area_code + "-" + investment.phone_prefix + "-" + investment.phone_last_four}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+  <div class="module">
+    <section class="module-section">
+      <%= f.submit "Place Order", class: "button button-blue" %>
+      <button class="button" es-scroll-top ng-click="step(2, $event)">Go Back</button>
+    </section>
+  </div>
+</div>

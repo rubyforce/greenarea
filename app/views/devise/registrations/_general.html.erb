@@ -1,0 +1,123 @@
+<div>
+  <div class="formwrap">
+
+    <div class='manage-pic'>
+      <figure class="profile-badge">
+        <%= render partial: 'users/avatar', locals: { user: current_user } %>
+      </figure>
+
+      <div>
+        <div class="ext-account-pics">
+          <span>
+            <button name="ext-account" value="facebook" title="Use profile picture from Facebook" class="ext-account-button facebook">
+              <%= image_tag current_user.facebook_avatar.url(:thumb), alt: current_user.name %>
+            </button>
+            <button name="ext-account" value="google-plus" title="Use profile picture from Google+" class="ext-account-button google-plus">
+              <%= image_tag current_user.google_plus_avatar.url(:thumb), alt: current_user.name %>
+            </button>
+            <button name="ext-account" value="linked-in" title="Use profile picture from LinkedIn" class="ext-account-button linked-in">
+              <%= image_tag current_user.linkedin_avatar.url(:thumb), alt: current_user.name %>
+            </button>
+          </span>
+        </div>
+
+        <div class="upload-profile-pic">
+          <%= form_for(current_user, :url => { :action => :upload_images } , :html => { :method => :put, :id => 'avatar_form' }) do |f| %>
+            <div class="table">
+              <div style="text-align:left;">
+                <%= f.file_field(:avatar) %>
+              </div>
+              <div id="profile-pic-upload-response" class="upload-response"></div>
+            </div>
+            <div id="profile-pic-upload-progress" class="goalmeter">
+              <div class="progress" style="width:0%"></div>
+            </div>
+          <% end %>
+        </div>
+
+        <script type='text/javascript'>
+          var id = 'profile-pic-upload';
+          $('#avatar_form #user_avatar').fileupload({
+            dataType: 'json',
+            progressall: function (e, response) {
+              var progress = parseInt(response.loaded / response.total * 100, 10);
+              $('#'+id+'-progress .progress').width(progress+'%');
+            },
+            done: function(e, response) {
+              $('#'+id+'-progress .progress').width('100%');
+              $('#'+id+'-progress').removeClass('error');
+              $('#'+id+'-response').removeClass('error').text('Done!').show();
+              // change pic
+              $(".profile-badge img").attr("src", response.result.avatar_url);
+            },
+            fail: function(e, response) {
+              $('#'+id+'-progress').addClass('error');
+              $('#'+id+'-response').addClass('error').text('Failed!').show();
+            },
+            send: function(e, data) {
+              $('#'+id+'-progress').removeClass('error').show();
+              $('#'+id+'-response').hide();
+            }
+          });
+        </script>
+      </div>
+
+    </div>
+
+    <%= form_for(current_user, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <fieldset class="input-group name">
+        <legend>Your name</legend>
+        <label for="user_title" style="width:15%;">
+          <%= f.text_field :title, placeholder: 'Title', 'ng-model' => "user.title", size: 1 %>
+        </label>
+        <label for="user_first_name" style="width:28.33%">
+          <%= f.text_field :first_name, placeholder: 'First Name', 'ng-model' => "user.first_name", size: 1 %>
+        </label>
+        <label for="user_last_name" style="width:28.33%">
+          <%= f.text_field :last_name, placeholder: 'Last Name', 'ng-model' => "user.last_name", size: 1 %>
+        </label>
+        <label for="user_middle_name" style="width:28.33%">
+          <%= f.text_field :middle_name, placeholder: 'Middle Name(s)', 'ng-model' => "user.middle_name", size: 1 %>
+        </label>
+      </fieldset>
+
+      <label for="user_short_bio">
+        <span>Mini biography</span>
+        <%= f.text_area :short_bio, placeholder: "Mini biography, max 160 characters", 'ng-model' => "user.short_bio", :size => 1, :rows => 5, :'ng-bind' => "user.short_bio" %>
+      </label>
+
+      <fieldset class="separated-top">
+        <label for="user_email">
+          <span>E-mail</span>
+          <%= f.email_field :email, placeholder: "E-mail", :size => 1 %>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>To change your password, provide your old password and then type the new one:</legend>
+        <div class="input-group">
+          <label for="user_current_password" style="width:33.3%">
+            <%= f.password_field :current_password, placeholder: "Old password", :size => 1, :autocomplete => 'off' %>
+          </label>
+          <label for="user_password" style="width:33.3%">
+            <%= f.password_field :password, placeholder: "New password", :size => 1, :autocomplete => 'off' %>
+          </label>
+          <label for="user_password_confirmation" style="width:33.3%">
+            <%= f.password_field :password_confirmation, placeholder: "New password confirmation", :size => 1, :autocomplete => 'off' %>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="action">
+        <div>
+          <div>
+            <%= f.submit 'Update', :class => "zeta thickest" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div> <!-- formwrap -->
+
+</div>
+

@@ -1,0 +1,36 @@
+<div id="tab3" class="tab" ng-show="investButton == 2">
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Specify Order Quantity</h2>
+    </header>
+    <section class="module-section">
+      <div id="checkout-order-form">
+        <div class="meta-horizontal items-3">
+          <div id="checkout-order-form-quantity" class="item invest_quantity_container">
+            <div class="metric" style='margin-top:10px'>Quantity</div>
+            <%= f.number_field :quantity, :'ng-model' => 'investment.quantity', :'ng-init' => 'investment.quantity=0', style: 'margin:0px;padding:0px;margin-top:6px;', required: true %>
+            <div class="math-symbol">×</div>
+            <span class="error-message" ng-show="investor_profile['investment[quantity]'].$error.required">This field is Required!</span>
+          </div>
+          <div id="checkout-order-form-price" class="item">
+            <div class="metric" style='margin-top: 10px;'>Price / Share</div>
+            <input type='hidden' ng-model='project.per_share' value='{{project.per_share}}' />
+            <div id='per_share' class="order-form-field value" style='margin-top: 6px;'><%= @project.view_per_share %></div>
+            <div class="math-symbol">=</div>
+          </div>
+          <div id="checkout-order-form-total" class="item">
+            <div class="metric" style='margin-top:10px'>Total Investment</div>
+            <div class="order-form-field value" id="result" style='margin-top: 6px;'>{{project.per_share * investment.quantity | currency:"$"}}</div>
+          </div>
+        </div>
+      </div>
+      <div id="checkout-order-form-instructions" class="small muted"></div>
+    </section>
+  </div>
+  <div class="module">
+    <div class="module-section form-actions">
+      <button class="button button-blue" es-scroll-top ng-click="step(3, $event)" ng-hide="!investor_profile.$valid">Continue</button>
+      <button class="button" es-scroll-top ng-click="step(1, $event)">Go Back</button>
+    </div>
+  </div>
+</div>

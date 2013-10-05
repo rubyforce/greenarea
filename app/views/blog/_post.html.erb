@@ -1,0 +1,16 @@
+<div class="blog-body">
+  <div class="blog-item clearfix">
+    <h2><%= post.title %></h2>
+
+    <div class="byline">
+      <span class="date"><%= post.created_at %></span>
+    </div>
+
+    <% if post.post_image? %>
+      <%= image_tag post.post_image_url %>
+    <% end %>
+
+    <p><%= post.content.html_safe %></p>
+  </div>
+</div>
+

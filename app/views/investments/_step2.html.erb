@@ -1,0 +1,168 @@
+<div id='tab2' class="tab" ng-show="investButton == 1">
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Primary Residence &amp; Phone</h2>
+    </header>
+    <section class="module-section">
+      <p>Please enter in your primary residence and phone number</p>
+      <div class="field-group">
+        <div class="sub-row">
+          <div class="span4">
+            <br>
+            <label class="field-label"><%= f.label :address_line_1, style: "font-weight: bold;" %></label>
+          </div>
+          <div class="span6">
+            <div class="fields">
+              <%= f.text_field :address_line_1, :'ng-model' => 'investment.address_line_1', required: true %>
+              <span class="error-message" ng-show="investor_profile['investment[address_line_1]'].$error.required">Required!</span>
+            </div>
+          </div>
+          <div class="span2"></div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="sub-row">
+          <div class="span4">
+            <br>
+            <label class="field-label"><%= f.label :address_line_2, style: "font-weight: bold;" %></label>
+          </div>
+          <div class="span6">
+            <div class="fields">
+              <%= f.text_field :address_line_2, :'ng-model' => 'investment.address_line_2'%>
+            </div>
+          </div>
+          <div class="span2"></div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="sub-row">
+          <div class="span4">
+            <br>
+            <label class="field-label">
+              <%= f.label :city, style: "font-weight: bold;" %>
+            </label>
+          </div>
+          <div class="span6">
+            <div class="fields">
+              <%= f.text_field :city, :value => current_user.city, :'ng-model' => 'investment.city', required: true %>
+              <span class="error-message" ng-show="investor_profile['investment[city]'].$error.required">Required!</span>
+            </div>
+          </div>
+          <div class="span2"></div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="sub-row">
+          <div class="span4">
+            <label class="field-label"><%= f.label :country, style: "font-weight: bold;" %></label>
+          </div>
+          <div class="span6">
+            <div class="fields">
+              <div class="select-holder">
+                <%= f.country_select(:country, ['USA', "Estonia", "United Kingdom"], {required: true}, {:'ng-model' => 'investment.country'}) %>
+                <span class="error-message" ng-show="investor_profile['investment[country]'].$error.required">Required!</span>
+              </div>
+            </div>
+          </div>
+          <div class="span2"></div>
+        </div>
+      </div>
+      <br>
+      <div class="field-group" id="hidden_state" ng-show="investment.country == 'USA'">
+        <div class="sub-row">
+          <div class="span4">
+            <label class="field-label"><%= f.label :state, style: "font-weight: bold;" %></label>
+          </div>
+          <div class="span6">
+            <div class="fields">
+              <div class="select-holder">
+                <%= f.state_select(:state, "US", {}, {:'ng-model' => 'investment.state'}) %>
+              </div>
+            </div>
+          </div>
+          <div class="span2"></div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="sub-row">
+          <div class="span4">
+            <br>
+            <label class="field-label"><%= f.label :zip_code, style: "font-weight: bold;" %></label>
+          </div>
+          <div class="span6">
+            <div class="fields">
+              <%= f.number_field :zip_code, value: current_user.zip_code, class: "char5", :'ng-model' => 'investment.zip_code', style: "width: 110px !important", required: true %>
+              <span class="error-message" ng-show="investor_profile['investment[zip_code]'].$error.required">Required!</span>
+            </div>
+          </div>
+          <div class="span2"></div>
+        </div>
+      </div>
+      <div class="field-group mb0">
+        <div class="sub-row">
+          <div class="span4">
+            <br>
+            <label class="field-label"><%= f.label :phone_number, style: "font-weight: bold;" %></label>
+          </div>
+          <div class="span6">
+            <div class="fields multi-field">
+              <%= f.number_field :phone_area_code, class: "char3", :'ng-model' => 'investment.phone_area_code', required: true %>
+              <span class="error-message" ng-show="investor_profile['investment[phone_area_code]'].$error.required">Required!</span>
+              <div class="input-inline">-</div>
+              <%= f.number_field :phone_prefix, class: "char3", :'ng-model' => 'investment.phone_prefix', required: true %>
+              <span class="error-message" ng-show="investor_profile['investment[phone_prefix]'].$error.required">Required!</span>
+              <div class="input-inline">-</div>
+              <%= f.number_field :phone_last_four, class: "char4", :'ng-model' => 'investment.phone_last_four', required: true %>
+              <span class="error-message" ng-show="investor_profile['investment[phone_last_four]'].$error.required">Required!</span>
+            </div>
+          </div>
+          <div class="span2"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="module">
+    <header class="module-section module-header">
+      <h2>Identification</h2>
+    </header>
+    <section class="module-section">
+      <p>To verify your identity, please upload an image of one of the following forms of identification:</p>
+      <ul>
+        <li>State-issued driver license</li>
+        <li>Passport (info page only)</li>
+        <li>State-issued ID</li>
+        <li>Military ID</li>
+        <li>Birth certificate</li>
+        <li>Citizenship card</li>
+      </ul>
+      <ul class="radio-checkbox-list">
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:identification, "now", checked: true) %> Upload a scan of your ID now
+          </label>
+        </li>
+        <li>
+          <label class="radio-checkbox-label">
+            <%= f.radio_button(:identification, "later", checked: false)%> Fax or email a copy later
+          </label>
+        </li>
+      </ul>
+      <div class="module" id="id-upload" style="display: none;">
+        <div class="module-section">
+          <div class="mb2">
+            <%= f.file_field :identification_document %>
+          </div>
+          <div class="mb4 small muted">JPG, PNG or PDF. Maximum 4 MB.</div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="module module-subdued">
+    <div class="module-section form-actions">
+      <button class="button button-blue" es-scroll-top ng-click="step(2, $event)" ng-model="clicked" ng-hide="!investor_profile.$valid">Continue</button>
+      <button class="button" es-scroll-top ng-click="step(0, $event)">Go Back</button>
+    </div>
+  </div>
+  <span class="error" ng-show="!investor_profile.$valid">Please fill all required fields and then you can moved the next step!</span>
+</div>
+

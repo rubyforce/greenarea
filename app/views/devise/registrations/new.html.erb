@@ -1,0 +1,43 @@
+<div id="sign-in" class="signup external">
+  <div class="modal-header">
+    <div>
+      <%= render 'layouts/logo' %>
+      <div class="close" onclick="$.fancybox.close()"></div>
+    </div>
+  </div>
+
+	<div class="modal-content">
+		<div>
+      <% unless params[:internal] %>
+        <form>
+          <div class="ext-account-buttons">
+            <%= render 'users/registrations/social' %>
+          </div>
+          <div class="action">
+            <div>
+              <div>
+                Sign up with an external account to follow your friends' activity on Flock.<br><a href="<%= new_user_registration_path(:internal => true) %>" class="sign-in sign-up fancybox.ajax">Sign up without any external accounts</a>.
+              </div>
+            </div>
+          </div>
+        </form>
+      <% else %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true) do |f| %>
+          <%= f.text_field :name, placeholder: "Full Name", size: 1, required: true %>
+          <%= f.email_field :email, placeholder: "Email", size: 1, required: true %>
+          <%= f.password_field :password, placeholder: "Password", size: 1, required: true %>
+
+          <div class="action">
+            <div>
+              <div>
+                Already have an account? <a href="<%= new_user_session_path %>" class="sign-in log-in fancybox.ajax">Sign in</a>.
+              </div>
+              <div><%= f.submit "Sign up", class: "delta thicker" %></div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,31 @@
+<section id="settings" class="general" ng-controller='ProfileController' data-user='<%= profile_user_json(current_user) %>'  data-projects='<%= projects_json(current_user.invested_projects) %>'>
+
+  <div class="head fix elevate">
+
+    <div id="tabs" class="tabs submenu">
+      <ul>
+        <li><a class="general" ng-click="openTab($event, 'profileTab', 1)" ng-class="{current:profileTab == 1}">Personal Details</a></li>
+        <li><a class="external-accounts" ng-click="openTab($event, 'profileTab', 2)" ng-class="{current:profileTab == 2}">External Accounts</a></li>
+        <li>
+          <%= link_to "Delete Account", registration_path(resource_name), data: { :confirm => "Are you sure?" }, method: :delete %>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="tab-content gridwrap" ng-class='{current:profileTab==1}' ng-show="profileTab == 1">
+    <%= render 'general' %>
+  </div>
+
+  <div class="tab-content gridwrap" ng-class='{current:profileTab==2}' ng-show="profileTab == 2">
+    <%= render 'external_accounts' %>
+  </div>
+
+  <div class="tab-content gridwrap" ng-class='{current:profileTab==4}' ng-show="profileTab == 4">
+    <div class="tab-content current">
+      <div></div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,22 @@
+<div id="sign-in" class="signup external" style="width: 50%; margin: 10px auto 0;">
+  <div class="modal-content">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table>
+        <tr>
+          <td style="padding-right: 20px"><%= f.label :email %></td>
+          <td><%= f.email_field :email, placeholder: "E-mail", autocomplete: 'off', size: 1, style: "width: 600px;" %></td>
+        </tr>
+        <tr>
+          <td style="padding-right: 20px"><%= f.label :password %></td>
+          <td><%= f.password_field :password, placeholder: "Password", autocomplete: 'off', size: 1, style: "width: 600px;" %></td>
+        </tr>
+      <tr>
+        <td></td>
+        <td style='text-align: right;'>
+          <%= f.submit "Sign in", class: "delta thicker", style: "float: right;" %></div>
+        </td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
+</div>
