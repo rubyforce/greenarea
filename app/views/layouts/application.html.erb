@@ -44,51 +44,9 @@
       <div class="item">Greearea 2013</div>
     </div>
 
-
     <!-- dialogs -->
 
-    <div class="ui test modal transition hidden" ng-controller='MarkerController'>
-      <i class="close icon"></i>
-      <div class="header">Add new marker to this area</div>
-      <div class="content">
-        <div class="ui header">Lets create the area to improve it!</div>
-        <div class="ui form segment">
-          <div class="field">
-            <label>Title</label>
-            <div class="ui left labeled icon input">
-              <input type="text" placeholder="Title">
-              <div class="ui corner label">
-                <i class="icon asterisk"></i>
-              </div>
-            </div>
-          </div>
-          <div class="field">
-            <label>Photo</label>
-            <div class="ui left labeled icon input">
-              <input type="file">
-              <i class="lock icon"></i>
-              <div class="ui corner label">
-                <i class="icon asterisk"></i>
-              </div>
-            </div>
-          </div>
-          <div class="ui error message">
-            <div class="header">We noticed some issues</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="actions">
-        <div class="ui black button">
-          Cancel
-        </div>
-        <div class="ui green right labeled icon button">
-          Submit
-          <i class="checkmark icon"></i>
-        </div>
-      </div>
-    </div>
-
+    <%= render 'layouts/dialog' %>
   </body>
 </html>
 
