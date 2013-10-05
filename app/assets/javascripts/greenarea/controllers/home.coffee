@@ -6,8 +6,9 @@ greenarea.controller 'HomeController', [
     $timeout ->
       if navigator.geolocation?
         navigator.geolocation.getCurrentPosition (position) =>
-          $scope.google.settings.center.latitude = position.coords.latitude
-          $scope.google.settings.center.latitude = position.coords.longitude
+          $scope.google.settings.center.latitude  = position.coords.latitude
+          $scope.google.settings.center.longitude = position.coords.longitude
+
           $scope.$apply ->
             $scope.google.refresh = !$scope.google.refresh
         , =>

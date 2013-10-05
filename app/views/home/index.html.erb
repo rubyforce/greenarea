@@ -1,13 +1,30 @@
-<% if current_user.blank? %>
-  <div class="masthead segment">
-    <h1 class="ui header">How it works?</h1>
+<div id='home-container' class="ui page grid">
+  <div class="ui stackable grid">
 
-    <br />
+    <div class="two column row" style='position: relative; '>
+      <div class="column">
+        <div class="ui blue inverted segment">
+          <p>Have you heard about our community meetups?</p>
+          <p>We are not the next charity organization!</p>
+          <p>We are community for creating the better breath for our Earth!</p>
+        </div>
+      </div>
 
-    <ul class="bxslider">
-    </ul>
+      <div class="column">
+        <div class="ui green inverted segment">
+          <p>Your the next steps:</p>
+          <p>Choose a location to make it natural placing the trees what you want.</p>
+          <p>Start from yourself, place a tree badge.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui horizontal divider">
+      <i class="circular globe icon" style='font-size: 3em'></i>
+    </div>
+
   </div>
-<% end %>
+</div>
 
 <div class="stripe" ng-controller='HomeController'>
   <es-google-map options='google.settings' refresh='google.refresh' extra='google.extra' styles='google.styles' style='height: 30rem;display:block;'></es-google-map>

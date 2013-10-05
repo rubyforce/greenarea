@@ -22,7 +22,6 @@
 //
 //= require vendors/infobubble
 //= require vendors/semantic.min
-//= require vendors/jquery.bxslider.min
 //
 //= require angular
 //= require angularjs/rails/resource
@@ -30,8 +29,4 @@
 //= require ng-rails-csrf
 //= require greenarea
 //
-
-$(document).ready(function(){
-  $('.bxslider').bxSlider();
-});
 

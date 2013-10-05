@@ -241,6 +241,11 @@ a:hover {
   position: relative;
   z-index: 100;
 }
+
+#example #home-container {
+  margin-top: 60px;
+}
+
 #example .masthead {
   position: relative;
   overflow: hidden;
