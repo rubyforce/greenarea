@@ -1,12 +1,13 @@
 <div class="main container">
-  <div class="sticky-wrapper stuck" style="height: 132px;">
-    <div class="peek">
-      <a class="ui purple button"><i class="dollar icon"></i>Invest</a>
-    </div>
-  </div>
-
   <div class="example" ng-controller='ProjectController' data-project="<%= project_json(@project) %>">
-    <h1 class="ui"><%= @project.name %></h1>
+    <h1 class="ui">
+      <%= @project.name %>
+
+      <% if current_user.present? %>
+        <a class="ui purple button"><i class="dollar icon"></i>Invest</a>
+      <% end %>
+
+    </h1>
     <div class="ui huge star rating active">
       <i class="icon active"></i>
       <i class="icon active"></i>
@@ -46,8 +47,4 @@
 
   <%= render "comments/form" %>
 </div>
-<script>
-$('.ui.rating')
-  .rating()
-;
-</script>
+
