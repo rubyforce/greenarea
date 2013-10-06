@@ -19,6 +19,7 @@
 //= require vendors/jquery.fancybox
 //= require ajax
 //= require sign-in_sign-up
+//= require rating
 //
 //= require vendors/infobubble
 //= require vendors/semantic.min

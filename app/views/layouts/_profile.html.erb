@@ -7,7 +7,10 @@
   </div>
 <% else %>
   <div class="green item">
-    <a class="user fancybox.ajax" href="<%= user_path(current_user) %>"><i class="user icon "></i> Profile</a>
+    <a class="ui image label fancybox.ajax" href="<%= user_path(current_user) %>">
+      <%= image_tag current_user.profile_image, alt: current_user.name %>
+      <%= current_user.name %>
+    </a>
   </div>
   <div class="red item">
     <i class="sign out icon"></i><%= link_to('Log Out', destroy_user_session_path, :method => :delete)%>
