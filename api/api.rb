@@ -3,16 +3,25 @@ require 'cgi'
 class Api < Grape::API
   format :json
 
+  helpers do
+    def project_attributes
+      {
+        image: request.body,
+        name: params[:title],
+        latitude: params[:latitude],
+        longitude: params[:longitude]
+      }
+    end
+  end
   resources :projects do
+    params do
+      requires :title
+      requires :latitude
+      requires :longitude
+    end
     post do
       begin
-        content = request.body.read
-
-        attributes = CGI::parse(content)
-
-        Rails.logger.debug "*" * 100
-        Rails.logger.debug attributes
-        Rails.logger.debug "*" * 100
+        Project.create!(project_attributes)
       rescue => boom
         Rails.logger.error boom.message
         throw :error, :status => 400
