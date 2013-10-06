@@ -14,5 +14,9 @@ class Project < ActiveRecord::Base
 
   include PublicActivity::Model
   tracked skip_defaults: true
+
+  def image_url
+    image.url(:thumb)
+  end
 end
 

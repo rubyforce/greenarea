@@ -2,7 +2,11 @@
   <div class="example" ng-controller='ProjectController' data-project="<%= project_json(@project) %>">
     <h1 class="ui">
       <%= @project.name %>
-      <a class="ui purple button"><i class="dollar icon"></i>Invest</a>
+
+      <% if current_user.present? %>
+        <a class="ui purple button"><i class="dollar icon"></i>Invest</a>
+      <% end %>
+
     </h1>
     <div class="ui huge star rating active">
       <i class="icon active"></i>
