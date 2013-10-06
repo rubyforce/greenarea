@@ -17,12 +17,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    unless current_user.present?
-      project = Project.create!(params[:project])
-    else
-      project = current_user.projects.create!(params[:project])
-    end
-
+    project = Project.create!(params[:project])
     redirect_to root_path
   end
 
