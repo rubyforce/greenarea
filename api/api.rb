@@ -1,12 +1,21 @@
-require 'cgi'
+require 'delegate'
 
 class Api < Grape::API
   format :json
 
+  class Image < SimpleDelegator
+    attr_reader :original_filename
+
+    def initialize(file, filename)
+      super(file)
+      @original_filename = filename
+    end
+  end
+
   helpers do
     def project_attributes
       {
-        image:     params[:userfile][:tempfile],
+        image:     Image.new(params[:userfile][:tempfile], params[:userfile][:filename]),
         name:      params[:title],
         latitude:  params[:latitude],
         longitude: params[:longitude]
