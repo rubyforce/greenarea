@@ -1,62 +1,7 @@
 <div class="main container" ng-controller="ProfileController">
-
-  <div class="sticky-wrapper stuck" style="height: 132px;"><div class="peek">
-    <div class="ui vertical pointing secondary menu">
-      <a class="item active">Profile</a>
-      <a class="item">Recent Activity</a>
-    </div>
-  </div></div>
-
-  <div class="example">
-    <h1 class="ui">Profile</h1>
-    <%= render partial: 'users/avatar', locals: { user: @user } %>
-    <h2 class="ui header"><%= @user.name %></h2>
-    <% if current_user == @user %>
-      <div class="settings-button" style="margin-left: 230px; margin-top: -50px;">
-        <a class="circular ui icon button" href="<%= edit_user_registration_path %>"><i class="icon settings"></i></a>
-      </div>
-    <% end %>
-
-    <p><%= @user.short_bio %></p>
-  </div>
-
-  <div class="ext-account-buttons">
-    <span>
-      <div class="ui facebook button">
-        <i class="facebook icon"></i>
-        <button name="ext-account" value="facebook" class="ext-account-button facebook" ng-click="open(user.facebook_link)" ng-class="{'connected-ext-account-button':user.facebook_link}" ng-hide="!user.facebook_link"></button>
-      </div>
-      <div class="ui twitter button">
-        <i class="twitter icon"></i>
-        <button name="ext-account" value="linked-in" class="ext-account-button linked-in" ng-click='open(user.linkedin_link)' ng-class="{'connected-ext-account-button':user.linkedin_link}" ng-hide="!user.linkedin_link"></button>
-      </div>
-      <div class="ui primary button">
-        <i class="google plus icon"></i>
-        <button name="ext-account" value="google-plus" class="ext-account-button google-plus" ng-click='open(user.google_plus_link)' ng-class="{'connected-ext-account-button':user.google_plus_link}" ng-hide="!user.google_plus_link"></button>
-      </div>
-    </span>
-  </div>
-
-  <div class="ui piled feed segment">
-    <h2 class="ui header">
-      Recent Activity
-    </h2>
-    <% unless @user.activities.empty? %>
-      <% for activity in @user.activities.order('created_at desc').limit(15) %>
-        <div class="event">
-          <div class="content">
-            <div class="date">
-              <time><%= distance_of_time_in_words_to_now(activity.created_at) %></time>
-            </div>
-            <div class="summary">
-               <%= render_activity(activity, current_user: current_user) %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% else %>
-      <p>User activity is empty</p>
-    <% end %>
-  </div>
+  <%= render "sticky_wrapper" %>
+  <%= render "profile_info" %>
+  <%= render "account_buttons" %>
+  <%= render "recent_activity" %>
   <%= render "comments/form" %>
 </div>

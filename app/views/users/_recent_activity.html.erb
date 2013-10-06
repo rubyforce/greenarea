@@ -1,0 +1,27 @@
+<div class="example">
+  <div class="ui two column grid">
+    <div class="column">
+      <div class="ui piled blue segment">
+        <h2 class="ui header">
+          <i class="icon inverted circular red users"></i></i> Recent Activity
+        </h2>
+        <% unless @user.activities.empty? %>
+          <% for activity in @user.activities.order('created_at desc').limit(15) %>
+            <div class="event">
+              <div class="content">
+                <div class="date">
+                  <time><%= distance_of_time_in_words_to_now(activity.created_at) %></time>
+                </div>
+                <div class="summary">
+                   <%= render_activity(activity, current_user: current_user) %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <p>User activity is empty</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

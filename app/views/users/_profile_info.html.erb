@@ -1,0 +1,12 @@
+<div class="example">
+  <h1 class="ui">Profile</h1>
+  <%= render partial: 'users/avatar', locals: { user: @user } %>
+  <h2 class="ui header"><%= @user.name %></h2>
+  <% if current_user == @user %>
+    <div class="settings-button" style="margin-left: 230px; margin-top: -50px;">
+      <a class="circular ui icon button" href="<%= edit_user_registration_path %>"><i class="icon settings"></i></a>
+    </div>
+  <% end %>
+
+  <p><%= @user.short_bio %></p>
+</div>
