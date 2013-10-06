@@ -1,0 +1,24 @@
+production:
+  facebook:
+    id: <%= ENV['FACEBOOK_ID'] %>
+    secret: <%= ENV['FACEBOOK_SECRET'] %>
+  google:
+    id: <%= ENV['GOOGLE_ID'] %>
+    secret: <%= ENV['GOOGLE_SECRET'] %>
+  linkedin:
+    id: <%= ENV['LINKEDIN_ID'] %>
+    secret: <%= ENV['LINKEDIN_SECRET'] %>
+  email:
+    host: "smtp.sendgrid.net"
+    port: 587
+    domain: "http://greenarea.herokuapp.com/"
+    username: <%= ENV['SENDGRID_USERNAME'] %>
+    password: <%= ENV['SENDGRID_PASSWORD'] %>
+    support_address: "alex.korsak@gmail.com"
+  redis:
+    url: "redis://127.0.0.1:6379/"
+  s3:
+    bucket: <%= ENV['S3_BUCKET_NAME'] %>
+    id: <%= ENV['S3_ACCESS_KEY_ID'] %>
+    access_key: <%= ENV['S3_SECRET_ACCESS_KEY'] %>
+
