@@ -1165,8 +1165,8 @@ body.progress .ui.progress .bar {
 @media only screen and (max-width : 1725px) {
   #example .container {
     width: auto;
-    margin-right: 100px;
-    margin-left: 325px;
+    margin-left: 8%;
+    margin-right: 8%;
   }
   #example.index .container {
     margin-left: 21em;

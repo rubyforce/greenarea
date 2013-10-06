@@ -2,15 +2,15 @@ module ApplicationHelper
   include FacebookShare
 
   def projects_json(projects)
-    projects.to_json(only: [:id, :name, :latitude, :longitude])
+    projects.to_json(only: [:id, :name, :latitude, :longitude], methods: [:image_url])
   end
 
   def signature(options = {})
     Base64.encode64(
       OpenSSL::HMAC.digest(
         OpenSSL::Digest::Digest.new('sha1'),
-        SECRET_ACCESS_KEY,
-        policy({ secret_access_key: SECRET_ACCESS_KEY })
+        Rails.configuration.s3.secret,
+        policy({ secret_access_key: Rails.configuration.s3.access_key })
       )
     ).gsub(/\n/, '')
   end
@@ -19,7 +19,7 @@ module ApplicationHelper
     Base64.encode64( {
       expiration: 30.minutes.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z'),
         conditions: [
-          { bucket: BUCKET },
+          { bucket: Rails.configuration.s3.bucket },
           { acl: 'public-read' },
           { success_action_status: '201' },
           ['starts-with', '$key', '']
@@ -29,7 +29,7 @@ module ApplicationHelper
   end
 
   def active_menu_item(item)
-    controller_name == item
+    controller_name == item ? "active" : ""
   end
 end
 

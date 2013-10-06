@@ -12,12 +12,18 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    @project = Project.new
     render :layout => false
   end
 
   def create
-    project = Project.create!(params[:project])
-    render :json => project.to_json(:only => [:name, :latitude, :longitude])
+    unless current_user.present?
+      project = Project.create!(params[:project])
+    else
+      project = current_user.projects.create!(params[:project])
+    end
+
+    redirect_to root_path
   end
 
   private

@@ -60,7 +60,7 @@ greenarea.factory 'EstatesMap', [
           settings:
             maxWidth: 300
             closeButtonClass: 'infobubble-close'
-            content: "<h5><a href='/projects/#{object.id}'>#{object.name}</a></h5><address>#{object.address}</address>"
+            content: "<h5><a href='/projects/#{object.id}'>#{object.name}</a></h5><p><img src='#{object.image_url}' width=100 height=100 /></p>"
             position: new google.maps.LatLng(object.latitude, object.longitude)
             shadowStyle: false
             padding: 0

@@ -21,4 +21,5 @@ log/
 config/database.yml
 tags
 .DS_Store
+config/settings.yml
 

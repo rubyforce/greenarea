@@ -104,6 +104,8 @@ greenarea.directive 'esGoogleMap', [
           Settings.latitude = position.lb
           Settings.longitude = position.mb
           $(document).trigger('ajax-ready')
+          $('#project_latitude').val(Settings.latitude)
+          $('#project_longitude').val(Settings.longitude)
 
     return {
       restrict: 'ECA'

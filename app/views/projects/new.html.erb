@@ -1,38 +1,44 @@
-<form name='form' class="ui test modal transition hidden" ng-controller='MarkersController'>
+<%= form_for @project, :multipart => true, :html => { :class => "ui test modal transition hidden", :'ng-controller' => 'MarkersController', :'ng-init' => 'init()' } do |f| %>
   <i class="close icon"></i>
   <div class="header">Add new marker to this area</div>
   <div class="content">
     <div class="ui form segment">
-      <div class="field">
-        <label>Name</label>
-        <div class="ui left labeled input">
-          <input type="text" name='project[name]' ng-model='project.name' placeholder="Name" ng-required='true'>
-          <div class="ui corner label">
-            <i class="icon asterisk"></i>
-          </div>
-        </div>
-      </div>
+        <div class="field">
+          <label>Name</label>
+          <div class="ui left labeled input">
+            <%= f.text_field :name, :'ng-model' => 'project.name', :placeholder => "Name", :'ng-required' => 'true' %>
 
-      <div class="field">
-        <label>Description</label>
-        <div class="ui left labeled icon input">
-          <textarea type="text" name='project[description]' ng-model='project.description' placeholder="Description" ng-required='true'></textarea>
-          <div class="ui corner label">
-            <i class="icon asterisk"></i>
+            <div class="ui corner label">
+              <i class="icon asterisk"></i>
+            </div>
           </div>
         </div>
-      </div>
+
+        <div class="field">
+          <label>Description</label>
+          <div class="ui left labeled icon input">
+            <%= f.text_area :description, :'ng-model' => 'project.description', :placeholder => 'Description', :'ng-required' => true %>
+
+            <div class="ui corner label">
+              <i class="icon asterisk"></i>
+            </div>
+          </div>
+        </div>
 
       <div class="field">
         <label>Photo</label>
         <div class="ui left labeled icon input">
-          <input type="file">
+          <%= f.file_field :image %>
           <i class="lock icon"></i>
           <div class="ui corner label">
             <i class="icon asterisk"></i>
           </div>
         </div>
       </div>
+
+      <%= f.hidden_field :latitude %>
+      <%= f.hidden_field :longitude %>
+
       <div class="ui error message">
         <div class="header">We noticed some issues</div>
       </div>
@@ -43,10 +49,10 @@
     <div class="ui black button">
       Cancel
     </div>
-    <div class="ui green right labeled icon button" ng-class='{disabled:form.$invalid}' ng-click='submit()'>
+    <input type='submit' class="ui green right labeled icon button" ng-class='{disabled:form.$invalid}'>
       Submit
       <i class="checkmark icon"></i>
     </div>
   </div>
-</form>
+<% end %>
 

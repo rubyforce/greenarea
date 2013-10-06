@@ -70,7 +70,6 @@ gem 'state_select', github: 'stormsilver/state_select'
 
 gem 'honeybadger'
 
-gem 'jquery-fileupload-rails'
 gem 'minitest', '~> 4.7.5'
 
 gem 'redis'
