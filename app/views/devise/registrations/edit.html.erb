@@ -1,41 +1,56 @@
-<section>
-
-  <div class="head fix elevate">
-
-    <div id="tabs" class="tabs submenu">
-      <ul>
-        <li><a class="general" ng-click="openTab($event, 'profileTab', 1)" ng-class="{current:profileTab == 1}">Personal Details</a></li>
-        <li><a class="external-accounts" ng-click="openTab($event, 'profileTab', 2)" ng-class="{current:profileTab == 2}">External Accounts</a></li>
-        <li>
-          <%= link_to "Delete Account", registration_path(resource_name), data: { :confirm => "Are you sure?" }, method: :delete %>
-        </li>
-      </ul>
+<div class="main container">
+  <h1 class="ui">Edit your profile</h1>
+  <%= form_for(current_user, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <div class="example">
+      <div class="ui basic button">
+        <i class="icon user"></i>
+        <%= f.file_field(:avatar) %>
+      </div>
     </div>
-<div class="head fix elevate">
-
-  <div id="tabs" class="tabs submenu">
-    <ul>
-      <li><a class="general" ng-click="openTab($event, 'profileTab', 1)" ng-class="{current:profileTab == 1}">Personal Details</a></li>
-      <li><a class="external-accounts" ng-click="openTab($event, 'profileTab', 2)" ng-class="{current:profileTab == 2}">External Accounts</a></li>
-      <li>
-        <%= link_to "Delete Account", registration_path(resource_name), data: { :confirm => "Are you sure?" }, method: :delete %>
-      </li>
-    </ul>
-  </div>
-
+    <div class="ui form">
+      <div class="ui three fields">
+        <div class="field">
+          <label>First name</label>
+          <%= f.text_field :first_name, placeholder: 'First Name'%>
+        </div>
+        <div class="field">
+          <label>Middle name</label>
+          <%= f.text_field :middle_name, placeholder: 'Middle Name(s)' %>
+        </div>
+        <div class="field">
+          <label>Last name</label>
+          <%= f.text_field :last_name, placeholder: 'Last Name' %>
+        </div>
+      </div>
+      <div class="field">
+        <label>E-mail</label>
+        <%= f.text_field :email, placeholder: "E-mail" %>
+      </div>
+      <div class="field">
+        <label>Mini biography</label>
+        <%= f.text_area :short_bio, placeholder: "Mini biography, max 160 characters" %>
+      </div>
+      <div class="ui three fields">
+        <div class="field">
+          <label>Old Password</label>
+          <%= f.password_field :current_password, placeholder: "Old password" %>
+        </div>
+        <div class="field">
+          <label>New password</label>
+          <%= f.password_field :password, placeholder: "New password" %>
+        </div>
+        <div class="field">
+          <label>New password confirmation</label>
+          <%= f.password_field :password_confirmation, placeholder: "New password confirmation" %>
+        </div>
+      </div>
+    </div>
+    <div class="example">
+      <div class="ui buttons">
+        <%= link_to "Cancel", :back, class: "ui button" %>
+        <div class="or"></div>
+        <%= f.submit 'Save', :class => "ui positive button" %>
+      </div>
+    </div>
+  <% end %>
 </div>
-
-  <div class="tab-content gridwrap" ng-class='{current:profileTab==1}' ng-show="profileTab == 1">
-    <%= render 'general' %>
-  </div>
-
-  <div class="tab-content gridwrap" ng-class='{current:profileTab==2}' ng-show="profileTab == 2">
-    <%= render 'external_accounts' %>
-  </div>
-
-  <div class="tab-content gridwrap" ng-class='{current:profileTab==4}' ng-show="profileTab == 4">
-    <div class="tab-content current">
-      <div></div>
-    </div>
-  </div>
-</section>
