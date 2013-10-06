@@ -7,6 +7,13 @@
 
   <div class="example" ng-controller='ProjectController' data-project="<%= project_json(@project) %>">
     <h1 class="ui"><%= @project.name %></h1>
+    <div class="ui huge star rating active">
+      <i class="icon active"></i>
+      <i class="icon active"></i>
+      <i class="icon active"></i>
+      <i class="icon"></i>
+      <i class="icon"></i>
+    </div>
     <div class="sub header"><%= @project.short_description %></div>
 
     <div class="map-view" ng-class='{tucked:!isOpened}' ng-controller='MapsController' data-markers='<%= projects_json([@project]) %>'>
@@ -39,3 +46,8 @@
 
   <%= render "comments/form" %>
 </div>
+<script>
+$('.ui.rating')
+  .rating()
+;
+</script>
