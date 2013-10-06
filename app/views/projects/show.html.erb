@@ -1,0 +1,41 @@
+<div class="main container">
+  <div class="sticky-wrapper stuck" style="height: 132px;">
+    <div class="peek">
+      <a class="ui purple button"><i class="dollar icon"></i>Invest</a>
+    </div>
+  </div>
+
+  <div class="example" ng-controller='ProjectController' data-project="<%= project_json(@project) %>">
+    <h1 class="ui"><%= @project.name %></h1>
+    <div class="sub header"><%= @project.short_description %></div>
+
+    <div class="map-view" ng-class='{tucked:!isOpened}' ng-controller='MapsController' data-markers='<%= projects_json([@project]) %>'>
+      <div class="map-toolbar-one">
+        <div class="show-map ui button" ng-click='show()'>Show map</div>
+      </div>
+
+      <div class="map-toolbar-two">
+        <div class="show-map ui button" ng-click='close()'>x</div>
+      </div>
+
+      <div class="map-viewport">
+        <es-google-map options='google.settings' refresh='google.refresh' extra='google.extra' styles='google.styles' style='height: 30rem;display:block;'></es-google-map>
+      </div>
+    </div>
+
+    <div class="ui celled list">
+      <% @project.investments.each do |investment| %>
+        <div class="item">
+          <img src="<%= investment.user.profile_image %>">
+
+          <div class="content">
+            <div class="header"><%= investment.user.name %></div>
+            <i>total badged trees: <%= investment.quantity %></i>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render "comments/form" %>
+</div>

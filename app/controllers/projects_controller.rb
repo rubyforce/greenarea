@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
 	end
 
   def show
-    @activities = @project.activities.includes(:user).includes(:trackable).order('created_at desc').limit(15).load
+    # @activities = @project.activities.includes(:user).includes(:trackable).order('created_at desc').limit(15).load
     @investors = @project.investors.load
     @project = @project.decorate
   end
