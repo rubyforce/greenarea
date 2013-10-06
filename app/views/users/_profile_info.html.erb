@@ -9,4 +9,21 @@
   <% end %>
 
   <p><%= @user.short_bio %></p>
+
+    <div class="ext-account-buttons">
+    <span>
+      <div class="ui facebook button">
+        <i class="facebook icon"></i>
+        <button name="ext-account" value="facebook" class="ext-account-button facebook" ng-click="open(user.facebook_link)" ng-class="{'connected-ext-account-button':user.facebook_link}" ng-hide="!user.facebook_link"></button>
+      </div>
+      <div class="ui twitter button">
+        <i class="twitter icon"></i>
+        <button name="ext-account" value="linked-in" class="ext-account-button linked-in" ng-click='open(user.linkedin_link)' ng-class="{'connected-ext-account-button':user.linkedin_link}" ng-hide="!user.linkedin_link"></button>
+      </div>
+      <div class="ui primary button">
+        <i class="google plus icon"></i>
+        <button name="ext-account" value="google-plus" class="ext-account-button google-plus" ng-click='open(user.google_plus_link)' ng-class="{'connected-ext-account-button':user.google_plus_link}" ng-hide="!user.google_plus_link"></button>
+      </div>
+    </span>
+  </div>
 </div>
