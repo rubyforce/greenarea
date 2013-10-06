@@ -4,7 +4,10 @@
       <%= @project.name %>
 
       <% if current_user.present? %>
-        <a class="ui purple button"><i class="dollar icon"></i>Invest</a>
+        <div class="ui teal labeled icon button">
+          <%= @project.longitude.round %> $
+          <i class="add icon"></i>
+        </div>
       <% end %>
 
     </h1>
