@@ -31,3 +31,7 @@
 //= require greenarea
 //
 
+$(function() {
+  $('.ui.rating').rating();
+});
+
