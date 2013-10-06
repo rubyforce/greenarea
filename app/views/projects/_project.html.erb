@@ -1,5 +1,5 @@
 <div class="example" ng-controller='ProjectController' data-project="<%= project_json(project) %>">
-  <h4 class="ui header"><%= link_to project.name, project_path(project) %></h4>
+  <h2 class="ui header"><%= link_to project.name, project_path(project) %></h2>
   <div class="sub header"><%= project.short_description %></div>
 
   <div class="map-view" ng-class='{tucked:!isOpened}' ng-controller='MapsController' data-markers='<%= projects_json([project]) %>'>
@@ -22,7 +22,7 @@
         <img src="<%= investment.user.profile_image %>">
 
         <div class="content">
-          <div class="header"><%= investment.user.name %></div>
+          <div class="header"><%= link_to investment.user.name, user_path(investment.user) %></div>
           <i>total badged trees: <%= investment.quantity %></i>
         </div>
       </div>
