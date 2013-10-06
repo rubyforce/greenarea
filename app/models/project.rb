@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
 
   belongs_to :user
 
-  validates :name, presence: true
+  validates :name, :latitude, :longitude, presence: true
 
   paginates_per 6
 
