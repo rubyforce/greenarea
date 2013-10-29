@@ -26,9 +26,10 @@ class Api < Grape::API
     get do
       Project.all.map do |project|
         {
-          title: project.name,
-          latitude: project.latitude,
-          longitude: project.longitude
+          title:      project.name,
+          latitude:   project.latitude,
+          longitude:  project.longitude,
+          image_url:  project.image_url
         }
       end
     end
