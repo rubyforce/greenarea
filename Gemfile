@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 ruby '1.9.3'
 
@@ -36,7 +36,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.0.1'
 
 gem 'haml'
-gem 'devise', git: 'git://github.com/plataformatec/devise.git'
+gem 'devise'
 gem 'cancan'
 gem 'protected_attributes'
 gem 'kaminari'
