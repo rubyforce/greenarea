@@ -16,9 +16,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
         render :new
       end
     else
-      # user = params[:user]
-      email = params[:email]
-      password = params[:password]
+      user = params[:user]
+      email = params[:user][:email]
+      password = params[:user][:password]
 
       respond_to do |format|
         format.json {
