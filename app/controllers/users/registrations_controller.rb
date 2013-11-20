@@ -2,8 +2,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   layout false, only: [:new, :create]
 
   def create
-    require "ruby-debug"
-    debugger
     if request.format != :json
       build_resource(sign_up_params)
 
@@ -41,7 +39,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
             end
           end
 
-          @user = User.create(params[:user])
+          @user = User.create(user)
 
           if @user.save
             render :json => {:user => @user}
