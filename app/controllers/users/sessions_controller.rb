@@ -1,5 +1,4 @@
 class Users::SessionsController < Devise::SessionsController
-  respond_to :json
 
   def new
     self.resource = resource_class.new(sign_in_params)
